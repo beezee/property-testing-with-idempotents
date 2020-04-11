@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{hypothesis} \PYG{k+kn}{import} \PYG{n}{given}
+\PYG{k+kn}{from} \PYG{n+nn}{hypothesis.strategies} \PYG{k+kn}{import} \PYG{n}{text}
+
+
+\PYG{n+nd}{@given}\PYG{p}{(}\PYG{n}{text}\PYG{p}{())}
+\PYG{k}{def} \PYG{n+nf}{test\PYGZus{}decode\PYGZus{}inverts\PYGZus{}encode}\PYG{p}{(}\PYG{n}{s}\PYG{p}{):}
+    \PYG{k}{assert} \PYG{n}{decode}\PYG{p}{(}\PYG{n}{encode}\PYG{p}{(}\PYG{n}{s}\PYG{p}{))} \PYG{o}{==} \PYG{n}{s}
+\end{Verbatim}

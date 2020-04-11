@@ -1,0 +1,19 @@
+\frametitle{FizzBuzz{$^{-1}$} as a Set Function, Idempotent}
+
+We just pick one value from each input set.
+
+\begin{tikzcd}[row sep = tiny]
+  & 1 & 1 \arrow[l] \\
+  & 2 & 2 \arrow[l] \\
+  & 3 & Fizz \arrow[l] \\
+  & 4 & 4 \arrow[l] \\
+  & 5 & Buzz \arrow[l] \\
+  & 7 & 7 \arrow[l] & ... \\
+  ... & 15 & FizzBuzz \arrow[l] \\
+  & 16 & 16 \arrow[l] \\
+\end{tikzcd}
+\medskip
+
+This can be pre-composed with FizzBuzz to create an identity on the output set. \\
+This means we have an idempotent on the input set.
+

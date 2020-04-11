@@ -1,0 +1,317 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{minted}
+\usemintedstyle{borland}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%Information to be included in the title page:
+\title{Property Testing with derived idempotents}
+\author{Brian Zeligson}
+\date{April 2020}
+
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+\section{Property Testing Intro}
+\begin{frame}
+\frametitle{What is Property Testing?}
+More specifically, Generator Driven Property Testing. \\ \pause
+\medskip
+
+Unit tests on cartoon steroids. \\ \pause
+\medskip
+
+Take from the source: \\
+\medskip
+
+\href{http://www.cse.chalmers.se/~rjmh/QuickCheck/manual.html}{QuickCheck} \\
+\href{https://hypothesis.readthedocs.io/en/latest/}{Hypothesis} \\
+\href{https://jsverify.github.io/}{JSVerify} \\
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Property Testing - A closer look at the examples}
+
+You don't know what your inputs are. \\ \pause
+\medskip
+
+Your properties are meant to hold over a broad set of inputs, they must be general. \\ \pause
+\medskip
+
+How do you make meaningful assertions without re-implementing the code under test? \\ \pause
+\medskip
+
+Revisit: \\
+\medskip
+
+\href{http://www.cse.chalmers.se/~rjmh/QuickCheck/manual.html}{QuickCheck} \\
+\href{https://hypothesis.readthedocs.io/en/latest/}{Hypothesis} \\
+\href{https://jsverify.github.io/}{JSVerify} \\
+
+\end{frame}
+
+
+\section{Isomorphism}
+\begin{frame}[fragile]
+\frametitle{Isomorphism Defined}
+\begin{tikzcd}
+  & A
+    \arrow[rr, bend left, swap, yshift = .7ex, swap, "to"]
+  & & B
+    \arrow[ll, bend left, yshift =  -.7ex, "from"]
+\end{tikzcd}
+\medskip
+\begin{equation*}
+\begin{aligned}
+& \text{from(to(A))} = from \circ to = 1_A \\
+& \text{to(from(B))} = to \circ from = 1_B
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Isomorphism Example: encode {$\iff$} decode}
+\begin{tikzcd}
+  & JSON 
+    \arrow[rr, bend left, swap, yshift = .7ex, swap, "encode"]
+  & & String
+    \arrow[ll, bend left, yshift =  -.7ex, "decode"]
+\end{tikzcd}
+\medskip
+\begin{equation*}
+\begin{aligned}
+& \text{decode(encode(JSON))} = decode \circ encode = 1_{JSON} \\
+& \text{encode(decode(String))} = encode \circ decode = 1_{String}
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Isomorphism Example: reverse {$\iff$} reverse}
+\begin{tikzcd}
+  & String 
+    \arrow[rr, bend left, swap, yshift = .7ex, swap, "reverse"]
+  & & String 
+    \arrow[ll, bend left, yshift =  -.7ex, "reverse"]
+\end{tikzcd}
+\medskip
+\begin{equation*}
+\begin{aligned}
+& \text{reverse(reverse(String))} = reverse \circ reverse = 1_{String} \\
+& \text{reverse(reverse(String))} = reverse \circ reverse = 1_{String} \\
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\section{Idempotent}
+\begin{frame}[fragile]
+\frametitle{Idempotent Defined}
+\begin{tikzcd}
+  & A
+    \arrow[rr, bend left, swap, yshift = .7ex, swap, "to"]
+  & & B
+    \arrow[ll, bend left, yshift =  -.7ex, "from"]
+\end{tikzcd}
+\medskip
+\begin{equation*}
+\begin{aligned}
+& \text{to(from(B))} = to \circ from = 1_B \\ \pause
+& \text{from(to(from(to(A))))} = \\ \pause
+& from \circ to \circ from \circ to = \\ \pause
+& from \circ (to \circ from) \circ to = \\ \pause
+& from \circ 1_B \circ to = \\ \pause
+& from \circ to \\
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Idempotent Example: Run {$\xhookrightarrow{}$} Rest}
+\begin{tikzcd}
+  & Run 
+    \arrow[rr, bend left, swap, yshift = .7ex, swap, "finish"]
+  & & Rest 
+    \arrow[ll, bend left, yshift =  -.7ex, "start"]
+\end{tikzcd}
+\medskip
+\begin{equation*}
+\begin{aligned}
+& \text{start(finish(Run))} = start \circ finish = 1_{Run} \\ \pause
+& \text{finish(start(finish(start(Rest))))} = \\
+& finish \circ start \circ finish \circ start = \\
+& finish \circ (start \circ finish) \circ start = \\
+& finish \circ (1_{Run}) \circ start = \\
+& finish \circ start \\
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Idempotent Example: JSON {$\xhookrightarrow{}$} String}
+\begin{tikzcd}
+  & JSON 
+    \arrow[rr, bend left, swap, yshift = .7ex, swap, "encode"]
+  & & String
+    \arrow[ll, bend left, yshift =  -.7ex, "decode"]
+\end{tikzcd}
+\medskip
+\begin{equation*}
+\begin{aligned}
+& \text{decode(encode(JSON))} = decode \circ encode = 1_{JSON} \\ \pause
+& \text{encode(decode(encode(decode(String))))} = \\
+& encode \circ decode \circ encode \circ decode = \\
+& encode \circ (decode \circ encode) \circ decode = \\
+& encode \circ (1_{JSON}) \circ decode = \\
+& encode \circ decode \\
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\section{Property Testing Revisited}
+
+\begin{frame}[fragile]
+\frametitle{Making Properties Easy}
+
+We know that properties are easy and effective when we have 
+an isomorphism. \\
+\medskip
+
+\begin{minted}{python}
+from hypothesis import given
+from hypothesis.strategies import text
+
+
+@given(text())
+def test_decode_inverts_encode(s):
+    assert decode(encode(s)) == s 
+\end{minted}
+
+\pause
+\medskip
+What about when we don't have an isomorphism? \\
+\pause
+\medskip
+
+Can we \emph{find} an isomorphism?
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Finding an isomorphism}
+
+FizzBuzz does not belong to an isomorphism.
+\medskip
+
+\begin{minted}{python}
+from typing import List
+def fizzbuzz(nums: List[int]) -> List[str]:
+  res: List[str] = []
+  for num in nums:
+    s = ""
+    if num % 3:
+      s += "Fizz"
+    if num % 5:
+      s += "Buzz"
+    if s == "":
+      s = str(num)
+    res.append(s)
+  return res
+\end{minted}
+
+\pause
+\medskip
+What is the closest isomorphism we can find? \\
+\medskip
+
+It helps to take a different perspective.
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{FizzBuzz as a Set Function}
+\begin{tikzcd}[row sep = tiny]
+  & 1 \arrow[r] & 1 \\
+  & 2 \arrow[r] & 2 \\
+  & 3 \arrow[r] & Fizz & ... \\
+  ... & 5 \arrow[r] & Buzz & ... \\
+  ... & 9 \arrow[ruu] &  & ... \\
+  ... & 12 \arrow[ruuu] &  & ... \\
+  ... & 15 \arrow[r] & FizzBuzz & ... \\
+  ... & 25 \arrow[ruuuu] &  & ... \\
+  ... & 30 \arrow[ruu] &  & ... \\
+\end{tikzcd}
+\medskip
+
+We cannot have an isomorphism because inputs \emph{collapse} 
+onto outputs. \\
+This prevents construction of an inverse.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{FizzBuzz as a Set Function, Partitioned Domain}
+\begin{tikzcd}[row sep = tiny]
+  & \{1\} \arrow[r] & 1 \\
+  & \{2\} \arrow[r] & 2 \\
+  & \{3, 6, 9, 12, ...\} \arrow[r] & Fizz \\
+  & \{4\} \arrow[r] & 4 \\
+  & \{5, 10, 20, 25, ...\} \arrow[r] & Buzz \\
+  & \{7\} \arrow[r] & 7 & ... \\
+  ... & \{15, 30, ...\} \arrow[r] & FizzBuzz \\
+  & \{16\} \arrow[r] & 16 \\
+\end{tikzcd}
+\medskip
+
+We have an isomorphism, can we fix the input type? \\ \pause
+\medskip
+
+With an idempotent.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{FizzBuzz{$^{-1}$} as a Set Function, Idempotent}
+
+We just pick one value from each input set.
+
+\begin{tikzcd}[row sep = tiny]
+  & 1 & 1 \arrow[l] \\
+  & 2 & 2 \arrow[l] \\
+  & 3 & Fizz \arrow[l] \\
+  & 4 & 4 \arrow[l] \\
+  & 5 & Buzz \arrow[l] \\
+  & 7 & 7 \arrow[l] & ... \\
+  ... & 15 & FizzBuzz \arrow[l] \\
+  & 16 & 16 \arrow[l] \\
+\end{tikzcd}
+\medskip
+
+This can be pre-composed with FizzBuzz to create an identity on the output set. \\
+This means we have an idempotent on the input set. 
+
+\end{frame}
+
+\section{FizzBuzz (live coding)}
+
+\end{document}
+
