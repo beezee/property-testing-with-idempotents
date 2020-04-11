@@ -20,7 +20,7 @@ def make_fizzbuzz(
   return fizzbuzz
 
 @given(
-  lists(integers(), max_size=10), 
+  lists(integers(min_value=1), max_size=10), 
   dictionaries(integers(min_value=1), text())
 )
 def test_fizzbuzz(nums: List[int], config: Dict[int, str]) -> None:
@@ -40,6 +40,9 @@ def test_fizzbuzz(nums: List[int], config: Dict[int, str]) -> None:
           if s == v:
             num = k
             break
+        if not num:
+          if int(s) % 230 == 0:
+            num = -1
         res.append(num or int(s))
       return res
     return inverse
