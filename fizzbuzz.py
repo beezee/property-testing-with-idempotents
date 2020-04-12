@@ -15,9 +15,9 @@ def fizzbuzz(nums: List[int]) -> List[str]:
     res.append(s)
   return res
 
-@given(lists(integers(), max_size=10))
+@given(lists(integers(min_value=1), max_size=10))
 def test_fizzbuzz(nums: List[int]) -> None:
   # with isomorphism -> encode(decode(x)) == x
   # with idempotent -> 
-  #   inverse(fizzbuzz(inverse(fizzbuzz(x)))) == inverse(fizzbuzz(x))
+  #   inverse(fizzbuzz(inverse(fizzbuzz(nums)))) == inverse(fizzbuzz(nums))
   assert False
