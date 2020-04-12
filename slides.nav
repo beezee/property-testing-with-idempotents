@@ -4,7 +4,7 @@
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\beamer@sectionpages {1}{2}}
 \headcommand {\beamer@subsectionpages {1}{2}}
-\headcommand {\sectionentry {1}{Property Testing Intro}{3}{Property Testing Intro}{0}}
+\headcommand {\sectionentry {1}{Introduction to Property Testing}{3}{Introduction to Property Testing}{0}}
 \headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
 \headcommand {\slideentry {1}{0}{2}{4/6}{}{0}}
@@ -13,7 +13,7 @@
 \headcommand {\beamer@framepages {7}{10}}
 \headcommand {\beamer@sectionpages {3}{10}}
 \headcommand {\beamer@subsectionpages {3}{10}}
-\headcommand {\sectionentry {2}{Isomorphism}{11}{Isomorphism}{0}}
+\headcommand {\sectionentry {2}{Isomorphisms: Ideal Property Testing Candidates}{11}{Isomorphisms: Ideal Property Testing Candidates}{0}}
 \headcommand {\slideentry {2}{0}{1}{11/11}{}{0}}
 \headcommand {\beamer@framepages {11}{11}}
 \headcommand {\slideentry {2}{0}{2}{12/12}{}{0}}
@@ -24,7 +24,7 @@
 \headcommand {\beamer@framepages {14}{14}}
 \headcommand {\beamer@sectionpages {11}{14}}
 \headcommand {\beamer@subsectionpages {11}{14}}
-\headcommand {\sectionentry {3}{Idempotent}{15}{Idempotent}{0}}
+\headcommand {\sectionentry {3}{Idempotents: Making Property Testing Practical}{15}{Idempotents: Making Property Testing Practical}{0}}
 \headcommand {\slideentry {3}{0}{1}{15/15}{}{0}}
 \headcommand {\beamer@framepages {15}{15}}
 \headcommand {\slideentry {3}{0}{2}{16/21}{}{0}}
@@ -35,7 +35,7 @@
 \headcommand {\beamer@framepages {24}{25}}
 \headcommand {\beamer@sectionpages {15}{25}}
 \headcommand {\beamer@subsectionpages {15}{25}}
-\headcommand {\sectionentry {4}{Property Testing Revisited}{26}{Property Testing Revisited}{0}}
+\headcommand {\sectionentry {4}{Application: Deriving Idempotents for Property Testing}{26}{Application: Deriving Idempotents for Property Testing}{0}}
 \headcommand {\slideentry {4}{0}{1}{26/26}{}{0}}
 \headcommand {\beamer@framepages {26}{26}}
 \headcommand {\slideentry {4}{0}{2}{27/29}{}{0}}
@@ -50,7 +50,7 @@
 \headcommand {\beamer@framepages {35}{35}}
 \headcommand {\beamer@sectionpages {26}{35}}
 \headcommand {\beamer@subsectionpages {26}{35}}
-\headcommand {\sectionentry {5}{FizzBuzz (live coding)}{36}{FizzBuzz (live coding)}{0}}
+\headcommand {\sectionentry {5}{Live Coding: Property Testing FizzBuzz}{36}{Live Coding: Property Testing FizzBuzz}{0}}
 \headcommand {\slideentry {5}{0}{1}{36/36}{}{0}}
 \headcommand {\beamer@framepages {36}{36}}
 \headcommand {\beamer@partpages {1}{36}}
