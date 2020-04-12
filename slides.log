@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  12 APR 2020 03:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  12 APR 2020 03:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1282,7 +1282,11 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 ]
 \openout4 = `slides.vrb'.
 
- (./slides.vrb) [35
+ (./slides.vrb)
+Overfull \vbox (5.59581pt too high) detected at line 315
+ []
+
+[35
 
 ] (./slides.toc) [36
 
@@ -1307,10 +1311,10 @@ runsystem(rm slides.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 25733 strings out of 492616
- 527990 string characters out of 6129482
- 652450 words of memory out of 5000000
- 28978 multiletter control sequences out of 15000+600000
+ 25809 strings out of 492616
+ 529999 string characters out of 6129482
+ 660091 words of memory out of 5000000
+ 29054 multiletter control sequences out of 15000+600000
  15018 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,15n,84p,773b,1024s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1322,7 +1326,7 @@ usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></
 usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></u
 sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on slides.pdf (36 pages, 156079 bytes).
+Output written on slides.pdf (36 pages, 156575 bytes).
 PDF statistics:
  1055 PDF objects out of 1200 (max. 8388607)
  993 compressed objects within 10 object streams
