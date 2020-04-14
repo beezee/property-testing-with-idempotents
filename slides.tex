@@ -254,7 +254,7 @@ It helps to take a different perspective.
 
 \begin{frame}[fragile]
 \frametitle{FizzBuzz as a Set Function}
-\begin{tikzcd}[row sep = tiny]
+\begin{tikzcd}[cramped, row sep = tiny]
   & 1 \arrow[r] & 1 \\
   & 2 \arrow[r] & 2 \\
   & 3 \arrow[r] & Fizz & ... \\
@@ -274,7 +274,7 @@ This prevents construction of an inverse.
 
 \begin{frame}[fragile]
 \frametitle{FizzBuzz as a Set Function, Partitioned Domain}
-\begin{tikzcd}[row sep = tiny]
+\begin{tikzcd}[cramped, row sep = tiny]
   & \{1\} \arrow[r] & 1 \\
   & \{2\} \arrow[r] & 2 \\
   & \{3, 6, 9, 12, ...\} \arrow[r] & Fizz \\
@@ -297,7 +297,7 @@ With an idempotent.
 
 We just pick one value from each input set.
 
-\begin{tikzcd}[row sep = tiny]
+\begin{tikzcd}[cramped, row sep = tiny]
   & 1 & \{1\} \arrow[l] & 1 \arrow[l] \\
   & 2 & \{2\} \arrow[l] & 2 \arrow[l] \\
   & 3 & \{3, 6, 9, 12, ...\} \arrow[l] & Fizz \arrow[l] \\

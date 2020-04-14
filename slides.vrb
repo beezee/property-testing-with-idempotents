@@ -2,7 +2,7 @@
 
 We just pick one value from each input set.
 
-\begin{tikzcd}[row sep = tiny]
+\begin{tikzcd}[cramped, row sep = tiny]
   & 1 & \{1\} \arrow[l] & 1 \arrow[l] \\
   & 2 & \{2\} \arrow[l] & 2 \arrow[l] \\
   & 3 & \{3, 6, 9, 12, ...\} \arrow[l] & Fizz \arrow[l] \\
