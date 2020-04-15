@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction to Property Testing}{3}{0}{1}
+\beamer@sectionintoc {2}{Isomorphisms: Ideal Property Testing Candidates}{11}{0}{2}
+\beamer@sectionintoc {3}{Idempotents: Practical Property Testing Candidates}{15}{0}{3}
+\beamer@sectionintoc {4}{Application: Deriving Idempotents for Property Testing}{26}{0}{4}
+\beamer@sectionintoc {5}{Live Coding: Property Testing FizzBuzz}{36}{0}{5}

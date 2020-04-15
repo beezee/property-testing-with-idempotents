@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{prop\PYGZus{}RevRev} \PYG{n}{xs} \PYG{o+ow}{=} \PYG{n}{reverse} \PYG{p}{(}\PYG{n}{reverse} \PYG{n}{xs}\PYG{p}{)} \PYG{o}{==} \PYG{n}{xs}
+  \PYG{k+kr}{where} \PYG{n}{types} \PYG{o+ow}{=} \PYG{n}{xs}\PYG{o+ow}{::}\PYG{p}{[}\PYG{k+kt}{Int}\PYG{p}{]}
+\end{Verbatim}
