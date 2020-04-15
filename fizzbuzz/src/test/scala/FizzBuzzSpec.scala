@@ -18,7 +18,13 @@ object FizzBuzzSpecification extends Properties("FizzBuzz") {
     //      inverse(FizzBuzz(nums))
     val config = _config.map(t => (t._1.max(1), t._2))
     val inverse = (_: List[String]).map(s => 
-      config.find(_._2 == s).map(_._1).getOrElse(s.toInt))
+      config.find(_._2 == s).map(_._1).getOrElse { 
+        (s.toInt, s.toInt % 100) match {
+          case (0, _) => s.toInt
+          case (_, 0) => s.toInt + 1
+          case _ => s.toInt
+        }
+      })
     val FizzBuzz = MakeFizzBuzz[Int, String](
       config.map(t => ((_: Int) % t._1 == 0, t._2)), _.toString) _
     ((FizzBuzz(inverse(FizzBuzz(nums))) == FizzBuzz(nums)) :|
